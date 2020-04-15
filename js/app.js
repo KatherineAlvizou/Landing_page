@@ -34,40 +34,38 @@ const sections= document.querySelectorAll("section");
  * 
 */
 
-// build the nav
+// building the nav items
 
 function createNavigation(){
 
-    for (let link of sections) {
+    for (let section of sections) {
         let navItem = document.createElement('li');
         navItem.classList.add('menu__link');
-        navItem.dataset.nav = link.id;
-        navItem.innerText = link.dataset.nav;
-         
+        navItem.dataset.nav=section.id;
+        navItem.innerText=section.dataset.nav;
+        navItem.id=section.dataset.nav; 
         navList.appendChild(navItem);
-
-       
-       }
-
-       
-
-};
-
-
-
+    //scrolling to the corresponding section when a nav item is clicked 
+   navItem.addEventListener('click', () => {   
+section.scrollIntoView({behavior: 'smooth'})
+});
+}
+}
 createNavigation();
+
 
 //adding an active class when a section is near top of viewport
 function makeActive() {
     for (const section of sections) {
-      const box = section.getBoundingClientRect();
-     
-      if (box.top <= 150 && box.bottom >= 150) {
-        // active state on the current section and the corresponding Nav link.
-        section[i].classList.add('your-active-class');
+const box = section.getBoundingClientRect();
+  
+      if (box.top <= 100 && box.bottom >= 100) {
+        // active state on the current section.
+        section.classList.add('your-active-class');
+
       } else {
-        // active state from other section and corresponding Nav link removed.
-        section[i].classList.remove('your-active-class');
+        // active state from other section removed.
+        section.classList.remove('your-active-class');
       }
     }
 };
@@ -77,16 +75,11 @@ document.addEventListener("scroll", function() {
     makeActive();
   });
   
-
-    
-
-
-
-
 // Add class 'active' to section when near top of viewport
 
 
 // Scroll to anchor ID using scrollTO event
+
 
 
 /**
@@ -100,5 +93,3 @@ document.addEventListener("scroll", function() {
 // Scroll to section on link click
 
 // Set sections as active
-
-

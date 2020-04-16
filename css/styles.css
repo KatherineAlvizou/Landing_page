@@ -10,6 +10,9 @@
 
 
 /* ---- Base Rules ---- */
+:root{
+    --color-greenish: rgb(109, 173, 93);
+}
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
@@ -97,12 +100,14 @@ li .menu__link{
     color: #000;
 }
 
-.navbar__menu .menu__link:hover {
+ .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
 }
-
+#navbar__list .menu__link .active{
+    color: var(--color-greenish);
+}
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -209,9 +214,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
-    color: aquamarine;
-    background: rgb(83, 71, 128);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(159, 245, 248, 0.5) 0%, rgba(0, 0, 0, 0) 100%);  
 }
 
 section.your-active-class .landing__container::before {
@@ -224,10 +227,7 @@ section.your-active-class .landing__container::after {
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 /* creating an active class that applies to nav items */
-.active{
-    background-color: aqua;
-    
-}
+
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
 	from {

@@ -21,19 +21,6 @@ const navList= document.getElementById("navbar__list");
 const sections= document.querySelectorAll("section");
 
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
 // building the nav items
 
 function createNavigation(){
@@ -47,49 +34,32 @@ function createNavigation(){
         navList.appendChild(navItem);
     //scrolling to the corresponding section when a nav item is clicked 
    navItem.addEventListener('click', () => {   
-section.scrollIntoView({behavior: 'smooth'})
+section.scrollIntoView({behavior: 'smooth'});
 });
 }
 }
 createNavigation();
 
-
-//adding an active class when a section is near top of viewport
-function makeActive() {
+//identifying when a section is near top of viewport
+function makeActive() { 
     for (const section of sections) {
-const box = section.getBoundingClientRect();
-  
-      if (box.top <= 100 && box.bottom >= 100) {
-        // active state on the current section.
+const link= document.querySelector('li[data-nav="' + section.id + '"]');
+const bounds = section.getBoundingClientRect();
+      if (bounds.top <= 100 && bounds.bottom >= 100) {
+        // active state on the current section and corresponding nav link
         section.classList.add('your-active-class');
-
+        link.classList.add('active');
+        
       } else {
-        // active state from other section removed.
+        // active state from other section and link removed.
         section.classList.remove('your-active-class');
-      }
+        link.classList.remove('active'); 
+      } 
     }
-};
-
+}
+   
     // Make sections active, calling the function on every scroll on page
 document.addEventListener("scroll", function() {
     makeActive();
   });
   
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
